@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     let id = menu();
     match id {
@@ -7,7 +9,16 @@ fn main() {
 }
 
 fn menu() -> i32 {
-    return 1;
+    println!(
+        "
+SELECT:
+[1] Double Through Channel
+"
+    );
+    let mut s = String::new();
+    io::stdin().read_line(&mut s).expect("Input Error");
+    let choice = s.parse::<i32>().unwrap();
+    return choice;
 }
 
 fn double_thru_channel() {
