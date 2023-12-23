@@ -1,5 +1,10 @@
 use std::io::{self, Write};
 
+const MENU: &str = "
+MENU
+1. Double Through Channel
+> ";
+
 fn main() {
     let id = menu();
     match id {
@@ -9,12 +14,7 @@ fn main() {
 }
 
 fn menu() -> i32 {
-    print!(
-        "
-MENU
-1. Double Through Channel
-> "
-    );
+    print!("{MENU}");
     io::stdout().flush().unwrap();
     let mut s = String::new();
     io::stdin().read_line(&mut s).expect("Input Error");
