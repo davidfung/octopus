@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self, Write};
 
 fn main() {
     let id = menu();
@@ -9,16 +9,23 @@ fn main() {
 }
 
 fn menu() -> i32 {
-    println!(
+    print!(
         "
-SELECT:
-[1] Double Through Channel
-"
+MENU
+1. Double Through Channel
+> "
     );
+    io::stdout().flush().unwrap();
     let mut s = String::new();
     io::stdin().read_line(&mut s).expect("Input Error");
-    let choice = s.parse::<i32>().unwrap();
-    return choice;
+    println!("");
+    match s.trim().parse::<i32>() {
+        Err(e) => {
+            println!("{}", e);
+            return 0;
+        }
+        Ok(choice) => return choice,
+    }
 }
 
 fn double_thru_channel() {
