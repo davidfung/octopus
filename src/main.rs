@@ -11,6 +11,9 @@ fn main() {
         1 => double_thru_channel(),
         _ => println!("Bye"),
     }
+    type Task = fn();
+    let g: Task = double_thru_channel;
+    g();
 }
 
 fn menu() -> i32 {
