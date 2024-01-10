@@ -1,4 +1,6 @@
 = TODO
 
 == STAGE 2
-* use function pointer in menu item
+* build menu structure {id, fn}
+* seperate menu items into their own module
+
