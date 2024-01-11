@@ -3,4 +3,5 @@
 == STAGE 2
 * build menu structure {id, fn}
 * seperate menu items into their own module
+* cmdline argument to select menu item
 
