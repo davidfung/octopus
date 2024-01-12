@@ -1,10 +1,7 @@
 use std::io::{self, Write};
 
 mod double_thru_channel;
-use double_thru_channel::double_thru_channel;
-
 mod spawn_async_tasks;
-use spawn_async_tasks::spawn_async_tasks;
 
 const MENU: &str = "
 MENU
@@ -17,8 +14,8 @@ fn main() {
     let id = menu();
     let g: Task;
     match id {
-        1 => g = double_thru_channel,
-        2 => g = spawn_async_tasks,
+        1 => g = double_thru_channel::entry,
+        2 => g = spawn_async_tasks::entry,
         _ => g = bye,
     }
     g();

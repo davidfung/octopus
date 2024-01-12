@@ -1,4 +1,4 @@
-pub fn double_thru_channel() {
+pub fn entry() {
     use std::sync::mpsc::{self, Receiver, Sender};
     use std::thread;
     use std::time;

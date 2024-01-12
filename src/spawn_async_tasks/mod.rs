@@ -1,7 +1,7 @@
 use async_std::io::prelude::*;
 use async_std::net;
 
-pub fn spawn_async_tasks() {
+pub fn entry() {
     let requests = vec![
         ("example.com".to_string(), 80, "/".to_string()),
         ("www.red-bean.com".to_string(), 80, "/".to_string()),
