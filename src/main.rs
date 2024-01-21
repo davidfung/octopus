@@ -9,8 +9,19 @@ MENU
 2. Spawning Async Tasks
 > ";
 
+type Task = fn();
+
+struct MenuItem {
+    id: u32,
+    desc: &'static str,
+    task: Task,
+}
+
 fn main() {
-    type Task = fn();
+    let mut menuz: Vec<MenuItem> = Vec::new();
+    menuz.push(MenuItem{id:1, desc:double_thru_channel::DESC, task:double_thru_channel::entry});
+    menuz.push(MenuItem{id:2, desc:spawn_async_tasks::DESC, task:spawn_async_tasks::entry});
+
     let id = menu();
     let g: Task;
     match id {

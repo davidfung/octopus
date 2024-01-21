@@ -1,3 +1,5 @@
+pub const DESC: &str = "Double Through Channel";
+
 pub fn entry() {
     use std::sync::mpsc::{self, Receiver, Sender};
     use std::thread;

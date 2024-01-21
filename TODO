@@ -1,8 +1,9 @@
 = TODO
 
 == STAGE 2
-* build menu structure {id, fn}
+* modify menu() to return entry point
 * cmdline argument to select menu item
 x seperate menu items into their own module
 x standardize module entry point to entry()
+x build menu structure {id, desc, fn}
 
