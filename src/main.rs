@@ -3,12 +3,6 @@ use std::io::{self, Write};
 mod double_thru_channel;
 mod spawn_async_tasks;
 
-const MENU: &str = "
-MENU
-1. Double Through Channel
-2. Spawning Async Tasks
-> ";
-
 type Task = fn();
 
 struct MenuItem {
@@ -18,29 +12,37 @@ struct MenuItem {
 }
 
 fn main() {
-    let mut menuz: Vec<MenuItem> = Vec::new();
-    menuz.push(MenuItem{id:1, desc:double_thru_channel::DESC, task:double_thru_channel::entry});
-    menuz.push(MenuItem{id:2, desc:spawn_async_tasks::DESC, task:spawn_async_tasks::entry});
+    let mut menu: Vec<MenuItem> = Vec::new();
+    menu.push(MenuItem{id:1, desc:double_thru_channel::DESC, task:double_thru_channel::entry});
+    menu.push(MenuItem{id:2, desc:spawn_async_tasks::DESC, task:spawn_async_tasks::entry});
 
-    let id = menu();
-    let g: Task;
-    match id {
-        1 => g = double_thru_channel::entry,
-        2 => g = spawn_async_tasks::entry,
-        _ => g = bye,
+    show_menu(&menu);
+    let id = get_selection();
+    let g;
+    if id == 0 {
+        g = bye as Task;
+    } else {
+        let pos = menu.iter().position(|v| v.id == id).unwrap();
+        g = menu[pos].task;
     }
     g();
 }
 
-fn menu() -> i32 {
-    print!("{MENU}");
+fn show_menu(menu: &Vec<MenuItem>) {
+    for item in menu {
+        println!("{} {}", item.id, item.desc);
+    }
+}
+
+fn get_selection() -> u32 {
+    print!("> ");
     io::stdout().flush().unwrap();
     let mut s = String::new();
     io::stdin().read_line(&mut s).expect("Input Error");
     println!("");
-    match s.trim().parse::<i32>() {
-        Err(_e) => {
-            // println!("{}", e);
+    match s.trim().parse::<u32>() {
+        Err(e) => {
+            println!("{}", e);
             return 0;
         }
         Ok(choice) => return choice,
