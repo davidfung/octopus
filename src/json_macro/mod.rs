@@ -1,6 +1,10 @@
 use std::collections::HashMap;
 
-pub const DESC: &str = "Json Macro";
+use crate::menu::MenuItem;
+
+pub fn menu() -> MenuItem {
+    MenuItem{task: entry, desc: "Json Macro"}
+}
 
 #[derive(Clone, PartialEq, Debug)]
 enum Json {
@@ -16,12 +20,12 @@ macro_rules! json {
     (Null) => { Json::Null }
 }
 
-#[test]
 fn json_null() {
     assert_eq!(json!(Null), Json::Null);
 }
 
 pub fn entry() {
     println!("json macro");
+    json_null();
 }
 

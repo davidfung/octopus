@@ -1,32 +1,36 @@
+use std::collections::BTreeMap;
+
 pub struct Menu {
-    items: Vec<MenuItem>
+    items: BTreeMap<u32, MenuItem>
 }
 pub struct MenuItem {
-    pub id: u32,
+    pub task: fn(),
     pub desc: &'static str,
-    pub task: Task,
 }
 
-pub type Task = fn();
+// pub type Task = fn();
 
 impl Menu {
     pub fn new() -> Menu {
-        Menu{items: Vec::new()}
+        Menu{items: BTreeMap::new()}
     }
 
-    pub fn add_item(&mut self, item: MenuItem) {
-        self.items.push(item);
+    pub fn add_item(&mut self, id: u32, item: MenuItem) {
+        self.items.insert(id, item);
     } 
 
     pub fn show(&self) {
-        for item in &self.items {
-            println!("{} {}", item.id, item.desc);
+        for (id, item) in &self.items {
+            println!("{} {}", id, item.desc);
         }
     }
 
-    pub fn get_task_by_id(&self, id: u32) -> Task {
-        let pos = self.items.iter().position(|v| v.id == id).unwrap();
-        self.items[pos].task
+    pub fn get_task_by_id(&self, id: u32) -> Option<fn()> {
+        if let Some(item) = self.items.get(&id) {
+            Some(item.task)
+        } else {
+            None
+        }
     }
 }
 

@@ -1,7 +1,11 @@
 use async_std::io::prelude::*;
 use async_std::net;
 
-pub const DESC: &str = "Spawn Async Tasks";
+use crate::menu::MenuItem;
+
+pub fn menu() -> MenuItem {
+    MenuItem{task: entry, desc: "Spawn Async Tasks"}
+}
 
 pub fn entry() {
     let requests = vec![

@@ -7,19 +7,17 @@ mod menu;
 
 fn main() {
     let mut mu = menu::Menu::new();
-    mu.add_item(menu::MenuItem{id:1, desc:double_thru_channel::DESC, task:double_thru_channel::entry});
-    mu.add_item(menu::MenuItem{id:2, desc:spawn_async_tasks::DESC, task:spawn_async_tasks::entry});
-    mu.add_item(menu::MenuItem{id:3, desc:json_macro::DESC, task:json_macro::entry});
+    mu.add_item(1, double_thru_channel::menu());
+    mu.add_item(2, spawn_async_tasks::menu());
+    mu.add_item(3, json_macro::menu());
     mu.show();
 
     let id = get_selection();
-    let g;
-    if id == 0 {
-        g = bye as menu::Task;
-    } else {
-        g = mu.get_task_by_id(id);
+    let g = mu.get_task_by_id(id);
+    match g {
+        Some(g) => g(),
+        _ => bye(),
     }
-    g();
 }
 
 fn get_selection() -> u32 {

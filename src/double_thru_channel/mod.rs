@@ -1,6 +1,10 @@
-pub const DESC: &str = "Double Through Channel";
+use crate::menu::MenuItem;
 
-pub fn entry() {
+pub fn menu() -> MenuItem {
+    MenuItem{task: entry, desc: "Double Through Channel"}
+}
+
+fn entry() {
     use std::sync::mpsc::{self, Receiver, Sender};
     use std::thread;
     use std::time;
