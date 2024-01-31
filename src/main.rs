@@ -1,6 +1,7 @@
 use std::io::{self, Write};
 
 mod double_thru_channel;
+mod json_macro;
 mod spawn_async_tasks;
 mod menu;
 
@@ -8,6 +9,7 @@ fn main() {
     let mut mu = menu::Menu::new();
     mu.add_item(menu::MenuItem{id:1, desc:double_thru_channel::DESC, task:double_thru_channel::entry});
     mu.add_item(menu::MenuItem{id:2, desc:spawn_async_tasks::DESC, task:spawn_async_tasks::entry});
+    mu.add_item(menu::MenuItem{id:3, desc:json_macro::DESC, task:json_macro::entry});
     mu.show();
 
     let id = get_selection();
