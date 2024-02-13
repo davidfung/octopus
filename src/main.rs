@@ -1,15 +1,18 @@
 use std::io::{self, Write};
 
 mod double_thru_channel;
+mod get_version;
 mod json_macro;
 mod spawn_async_tasks;
 mod menu;
+pub mod version;
 
 fn main() {
     let mut mu = menu::Menu::new();
     mu.add_item(1, double_thru_channel::menu());
     mu.add_item(2, spawn_async_tasks::menu());
     mu.add_item(3, json_macro::menu());
+    mu.add_item(4, get_version::menu());
     mu.show();
 
     let id = get_selection();
