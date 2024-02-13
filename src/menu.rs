@@ -5,7 +5,7 @@
 // pub fn menu() -> MenuItem {
 //     MenuItem {
 //         task: entry,
-//         desec: "Module Description...",
+//         desc: "Module Description...",
 //     }
 // }
 //

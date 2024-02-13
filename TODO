@@ -1,6 +1,7 @@
 = TODO
 
 == NEXT
+* fix menu.rs typo
 
 == STAGE 2
 * cmdline argument to select menu item
