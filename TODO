@@ -1,14 +1,6 @@
 = TODO
 
-== NEXT
-* fix menu.rs typo
+== STAGE 3
+[ ] get a domain DNS txt record
 
-== STAGE 2
-* cmdline argument to select menu item
-x modify main to use menu module
-x modify menu() to return entry point
-x create menu struct
-x seperate menu items into their own module
-x standardize module entry point to entry()
-x build menu structure {id, desc, fn}
 

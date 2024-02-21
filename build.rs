@@ -9,3 +9,8 @@ fn main() {
     let content =  format!("pub static VERSION:u32 = {};", i+1);
     fs::write(PATH, content).unwrap();
 }
+
+#[test]
+fn test_build_script() {
+    println!("Test");
+}
