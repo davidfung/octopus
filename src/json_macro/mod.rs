@@ -6,6 +6,7 @@ pub fn menu() -> MenuItem {
     MenuItem{task: entry, desc: "Json Macro"}
 }
 
+#[allow(dead_code)]
 #[derive(Clone, PartialEq, Debug)]
 enum Json {
     Null,
