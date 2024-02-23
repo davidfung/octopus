@@ -10,3 +10,8 @@ pub fn menu() -> MenuItem {
 pub fn entry() {
     todo!();
 }
+
+#[test]
+fn test_dns_info() {
+    println!("testing dns info...");
+}

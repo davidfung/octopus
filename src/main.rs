@@ -1,6 +1,7 @@
 use std::io::{self, Write};
 
 mod double_thru_channel;
+mod dns_info;
 mod get_version;
 mod json_macro;
 mod spawn_async_tasks;
@@ -10,9 +11,10 @@ pub mod version;
 fn main() {
     let mut mu = menu::Menu::new();
     mu.add_item(1, double_thru_channel::menu());
-    mu.add_item(2, spawn_async_tasks::menu());
-    mu.add_item(3, json_macro::menu());
-    mu.add_item(4, get_version::menu());
+    mu.add_item(2, dns_info::menu());
+    mu.add_item(3, spawn_async_tasks::menu());
+    mu.add_item(4, json_macro::menu());
+    mu.add_item(5, get_version::menu());
     mu.show();
 
     let id = get_selection();
